@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-google-places-autocomplete";
+import { CurrentLocation } from "../CurrentLocation";
+import { FavoriteStar } from "../FavoriteStar";
 import { Container } from "./style";
 
 interface PlaceProps {
@@ -22,17 +24,6 @@ export function InputLocation(): JSX.Element {
     const [place, setPlace] = useState<PlaceProps>()
     const [coordinates, setCoordinates] = useState<CoordinatesProps>()
 
-    // function that gets the current position of the user, based on their browser geolocation
-    function getCurrentPosition() {
-        navigator.geolocation.getCurrentPosition((position) => {
-
-            setCoordinates({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            })
-        })
-    }
-
     // Everytime the place changes, call the function that returns the coordinates of that place
     // only executes if the place exists, because when the page is mounted, 
     // place is undefined, which means it has no property label
@@ -53,11 +44,12 @@ export function InputLocation(): JSX.Element {
                 debounce={500}
                 selectProps={{ place, onChange: setPlace }}
             />
-            <button
-                onClick={getCurrentPosition}
-            >
-                Posição atual
-            </button>
+
+            <FavoriteStar label={place?.label} />
+
+            <CurrentLocation
+                setCoordinates={setCoordinates}
+            />
         </Container>
     )
 }
