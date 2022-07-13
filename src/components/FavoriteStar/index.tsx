@@ -16,11 +16,14 @@ export function FavoriteStar(): JSX.Element {
     if (favorite) {
         return (
             <Container>
-                <Star
-                    weight='fill'
-                    className='isFavorite'
+                <button
                     onClick={() => deleteFavorite(favorite.id)}
-                />
+                >
+                    <Star
+                        weight='fill'
+                        className='isFavorite'
+                    />
+                </button>
             </Container>
         )
     }
@@ -28,13 +31,17 @@ export function FavoriteStar(): JSX.Element {
     // if it is not a favorite, return a black start with the feature of adding to favorite
     return (
         <Container>
-            <Star
-                className='notFavorite'
+            <button
                 onClick={() => saveNewFavorite({
                     id: uuidv4(),
                     label: place.label as string
                 })}
-            />
+            >
+                <Star
+                    className='notFavorite'
+
+                />
+            </button>
         </Container>
     )
 }

@@ -37,6 +37,7 @@ export const Container = styled.div`
         .favorite {
             
             display: flex;
+            justify-content: space-between;
             align-items: center;
             gap: 1rem;
             
@@ -44,6 +45,9 @@ export const Container = styled.div`
                 color: var(--gray-900);
                 font-size: 1rem;
                 padding: 0.25rem .5rem;
+
+                display: flex;
+                align-items: center;
             }
 
             svg {

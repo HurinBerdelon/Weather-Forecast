@@ -37,9 +37,11 @@ export function HandleFavorites(): JSX.Element {
                                         >
                                             {favorite.label}
                                         </button>
-                                        <Trash
-                                            onClick={() => deleteFavorite(favorite.id)}
-                                        />
+                                        <button>
+                                            <Trash
+                                                onClick={() => deleteFavorite(favorite.id)}
+                                            />
+                                        </button>
                                     </div>
                                 </Menu.Item>
                             ))

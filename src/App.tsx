@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ToastContainer } from 'react-toastify'
 import { CurrentLocation } from "./components/CurrentLocation";
 import { DailyChart } from "./components/DailyChart";
 import { DailyMoreInformation } from "./components/DailyMoreInformation";
@@ -21,6 +22,7 @@ function App() {
 			<GlobalStyle />
 			<WeatherProvider>
 				<FavoritesProvider>
+					<ToastContainer />
 					<Header />
 					<InputLocation />
 					<CurrentLocation />

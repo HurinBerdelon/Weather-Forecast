@@ -1,6 +1,7 @@
 import { Crosshair } from "phosphor-react"
 import { geocodeByLatLng } from "react-google-places-autocomplete"
 import { useWeather } from "../../hooks/useWeather"
+import { toastWarn } from "../../provider/toastProvider"
 import { Container } from "./style"
 
 export function SetCurrentLocation(): JSX.Element {
@@ -8,7 +9,15 @@ export function SetCurrentLocation(): JSX.Element {
     const { setCoordinates, setPlace } = useWeather()
 
     // function that gets the current position of the user, based on their browser geolocation
-    function getCurrentPosition() {
+    async function getCurrentPosition() {
+
+        // check for permission to access the location, if it is denied, prompt a toast asking user to allow access to geolocation
+        const geoloactionPermission = await navigator.permissions.query({ name: 'geolocation' })
+        if (geoloactionPermission.state === 'denied') {
+            toastWarn('No Permissions to access the location, please enable it.')
+            return
+        }
+
         navigator.geolocation.getCurrentPosition((position) => {
 
             setCoordinates({

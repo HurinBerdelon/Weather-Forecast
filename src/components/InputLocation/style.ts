@@ -10,6 +10,8 @@ export const Container = styled.section`
     border: 1px solid var(--gray-400);
     border-radius: 0.25rem;
 
+    background: #FFFFFF;
+
     
     div:first-of-type {
 
