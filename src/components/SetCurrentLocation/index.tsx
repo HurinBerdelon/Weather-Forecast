@@ -1,16 +1,10 @@
 import { Crosshair } from "phosphor-react"
+import { useWeather } from "../../hooks/useWeather"
 import { Container } from "./style"
 
-interface CoordinatesProps {
-    lat: number
-    lng: number
-}
+export function SetCurrentLocation(): JSX.Element {
 
-interface CurrentLocationProps {
-    setCoordinates(coordinates: CoordinatesProps): void
-}
-
-export function SetCurrentLocation({ setCoordinates }: CurrentLocationProps): JSX.Element {
+    const { setCoordinates } = useWeather()
 
     // function that gets the current position of the user, based on their browser geolocation
     function getCurrentPosition() {
