@@ -8,8 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.6",
     "axios": "^0.27.2",
     "chart.js": "^3.8.0",
+    "dayjs": "^1.11.3",
     "phosphor-react": "^1.4.1",
     "react": "^18.0.0",
     "react-chartjs-2": "^4.3.0",
