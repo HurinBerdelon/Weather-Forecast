@@ -1,5 +1,7 @@
+import { DailyChart } from "./components/DailyChart";
 import { InputLocation } from "./components/InputLocation";
 import { WeeklyWeather } from "./components/WeeklyWeather";
+import { MainContainer } from "./style/appStyle";
 import { GlobalStyle } from "./style/global";
 
 function App() {
@@ -8,7 +10,11 @@ function App() {
 		<>
 			<GlobalStyle />
 			<InputLocation />
-			<WeeklyWeather />
+			<MainContainer>
+				<WeeklyWeather />
+				<DailyChart />
+			</MainContainer>
+			<aside></aside>
 		</>
 	)
 }
