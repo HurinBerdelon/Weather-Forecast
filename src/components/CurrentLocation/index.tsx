@@ -1,36 +1,10 @@
-import { Crosshair } from "phosphor-react"
-import { Container } from "./style"
+import { Container } from "./style";
 
-interface CoordinatesProps {
-    lat: number
-    lng: number
-}
-
-interface CurrentLocationProps {
-    setCoordinates(coordinates: CoordinatesProps): void
-}
-
-export function CurrentLocation({ setCoordinates }: CurrentLocationProps): JSX.Element {
-
-    // function that gets the current position of the user, based on their browser geolocation
-    function getCurrentPosition() {
-        navigator.geolocation.getCurrentPosition((position) => {
-
-            setCoordinates({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude
-            })
-        })
-    }
+export function CurrentLocation(): JSX.Element {
 
     return (
         <Container>
-            <button
-                type='button'
-                onClick={getCurrentPosition}
-            >
-                <Crosshair />
-            </button>
+            <h2>Rio de Janeiro, RJ, Brasil</h2>
         </Container>
     )
 }
