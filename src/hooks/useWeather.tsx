@@ -95,6 +95,8 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
     // based on the response
     async function getForecast(lat: number, lng: number) {
 
+        setForecast({} as ForecastProps)
+
         // OpenWeather API Call
         const { data } = await weather_api.get(
             `/onecall?lat=${lat}&lon=${lng}&exclude=minutely&units=metric&appid=${import.meta.env.VITE_OPEN_WEATHER_KEY}`
@@ -113,8 +115,8 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
                     weekDay: dayjs.unix(day.dt).local().format('dddd'),
                     humidity: day.humidity,
                     wind_speed: day.wind_speed,
-                    sunrise: dayjs.unix(day.sunrise).local().format('HH:mm:ss DD/MM/YYYY'),
-                    sunset: dayjs.unix(day.sunset).local().format('HH:mm:ss DD/MM/YYYY'),
+                    sunrise: dayjs.unix(day.sunrise).local().format('HH:mm:ss'),
+                    sunset: dayjs.unix(day.sunset).local().format('HH:mm:ss'),
                     temp: {
                         min: Math.round(day.temp.min),
                         max: Math.round(day.temp.max),

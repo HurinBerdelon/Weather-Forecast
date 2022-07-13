@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { CurrentLocation } from "./components/CurrentLocation";
 import { DailyChart } from "./components/DailyChart";
 import { DailyMoreInformation } from "./components/DailyMoreInformation";
 import { InputLocation } from "./components/InputLocation";
@@ -20,9 +21,9 @@ function App() {
 			<WeatherProvider>
 				<FavoritesProvider>
 					<InputLocation />
+					<CurrentLocation />
 					<MainContainer>
 						<main>
-
 							<WeeklyWeather />
 							<SelectorButtons
 								isShowingMoreInformation={isShowingMoreInformation}

@@ -31,15 +31,18 @@ export function FavoritesProvider({ children }: FavoriteProviderProps): JSX.Elem
         if (result) setFavorites(JSON.parse(result))
     }, [])
 
-    // Save new favorite function updates the state with the old favorites and the new one and save in the localstorage
-    function saveNewFavorite(favorite: FavoriteProps) {
-
-        setFavorites(prevFavorites => [...prevFavorites, favorite])
-
+    // Save the favorites in the localStorage everytime it changes
+    useEffect(() => {
         localStorage.setItem(
             favoriteKey,
             JSON.stringify(favorites)
         )
+    }, [favorites])
+
+    // Save new favorite function updates the state with the old favorites and the new one and save in the localstorage
+    function saveNewFavorite(favorite: FavoriteProps) {
+        console.log('save')
+        setFavorites(prevFavorites => [...prevFavorites, favorite])
     }
 
     // delete favorite function update the state with the old favorites removing the one user wants to delete
@@ -50,11 +53,6 @@ export function FavoritesProvider({ children }: FavoriteProviderProps): JSX.Elem
         tmpFavorites.splice(itemBeingDeletedIndex, 1)
 
         setFavorites(tmpFavorites)
-
-        localStorage.setItem(
-            favoriteKey,
-            JSON.stringify(favorites)
-        )
     }
 
     return (
