@@ -16,7 +16,10 @@ export function HandleFavorites({ setPlace }: HandleFavoritesProps): JSX.Element
         <Container>
             <Menu>
                 <Menu.Button>
-                    <CaretDown />
+                    <div className="favoritesButton">
+                        Favorites
+                        <CaretDown />
+                    </div>
                 </Menu.Button>
                 <Menu.Items className='menuItems'>
                     <Menu.Item>

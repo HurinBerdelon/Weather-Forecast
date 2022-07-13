@@ -1,6 +1,17 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+
+    .favoritesButton {
+        display: flex;
+        align-items: center;
+        gap: .25rem;
+
+        svg {
+            font-size: 1.25rem;
+        }
+    }
+
     .menuItems {
         position: absolute;
         z-index: 1;
