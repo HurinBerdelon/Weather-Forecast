@@ -7,14 +7,23 @@ export const Container = styled.section`
     align-items: center;
     gap: .5rem;
     padding-right: .5rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray-400);
     border-radius: 0.25rem;
 
     
     div:first-of-type {
+
         flex: 1;
         border: none;
         outline: none;
 
+        /* remove arrow selector of GooglePlacesAutocomplete component */
+        div {
+            div:last-child {
+                svg {
+                    display: none;
+                }
+            }
+        }
     }
 `

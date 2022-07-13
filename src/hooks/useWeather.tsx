@@ -25,6 +25,7 @@ interface ForecastProps {
     }[],
     daily: {
         dt: string
+        weekDat: string
         humidity: number
         wind_speed: number
         sunrise: string
@@ -95,7 +96,8 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
             current: { dt: dayjs.unix(data.current.dt).local().format('HH:mm:ss DD/MM/YYYY') },
             daily: data.daily.map((day: any) => {
                 return {
-                    dt: dayjs.unix(day.dt).local().format('HH:mm:ss DD/MM/YYYY'),
+                    dt: dayjs.unix(day.dt).local().format('DD/MM'),
+                    weekDat: dayjs.unix(day.dt).local().format('dddd'),
                     humidity: day.humidity,
                     wind_speed: day.wind_speed,
                     sunrise: dayjs.unix(day.sunrise).local().format('HH:mm:ss DD/MM/YYYY'),

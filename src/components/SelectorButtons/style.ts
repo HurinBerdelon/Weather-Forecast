@@ -9,17 +9,17 @@ export const Container = styled.div`
 
     .selectorButton {
         width: 120px;
-        border: 1px solid #000;
         border-radius: 0.25rem;
         font-size: 1rem;
         font-weight: 600;
+        background: var(--gray-400);
 
         &.active {
-            background: #ccc;
+            background: var(--orange-500);
         }
 
         &:hover {
-            filter: brightness(0.8);
+            filter: brightness(1.2);
         }
     }
 `

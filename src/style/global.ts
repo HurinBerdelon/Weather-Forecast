@@ -9,7 +9,8 @@ export const GlobalStyle = createGlobalStyle`
         --green-500: #1cd759;
         
         --gray-100: #F9FFF9;
-        --gray-200: #E4ECE4;
+        --gray-200: #E2E4E2;
+        --gray-400: #A4A7A4;
         --gray-900: #121619;
 
     }
@@ -25,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
         max-width: 1280px;
         min-height: 100%;
         margin: 0 auto;
+        background: var(--gray-100);
     }
 
     body, input, button {

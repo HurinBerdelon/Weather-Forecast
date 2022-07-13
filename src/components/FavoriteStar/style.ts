@@ -10,11 +10,11 @@ export const Container = styled.div`
 
         &:hover{
             cursor: pointer;
-            filter: brightness(0.8);
+            filter: brightness(1.2);
         }
     }
 
     .isFavorite {
-        color: #ff0;
+        color: var(--yellow-500);
     }
 `

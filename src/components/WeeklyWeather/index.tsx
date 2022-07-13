@@ -18,6 +18,7 @@ export function WeeklyWeather(): JSX.Element {
             <DailyCard dailyWeather={dailyWeather} />
             <DailyCard dailyWeather={dailyWeather} />
             <DailyCard dailyWeather={dailyWeather} />
+            <DailyCard dailyWeather={dailyWeather} />
         </Container>
     )
 }

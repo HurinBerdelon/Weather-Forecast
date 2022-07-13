@@ -2,17 +2,18 @@ import styled from "styled-components";
 
 export const Container = styled.section`
 
-    max-width: 800px;
+    max-width: 865px;
     display: flex;
     justify-content: space-evenly;
     margin-top: 1rem;
-    border: 1px solid #000;
+    border: 1px solid var(--gray-400);
     border-radius: 0.25rem;
 
     .leftBox, .rightBox, .middleBox {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        color: var(--gray-900);
 
         div {
             display: flex;

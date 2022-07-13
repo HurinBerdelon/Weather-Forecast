@@ -7,8 +7,14 @@ export const Container = styled.div`
         align-items: center;
         gap: .25rem;
 
+        color: var(--gray-900);
+
         svg {
             font-size: 1.25rem;
+        }
+
+        &:hover {
+            filter: brightness(1.2);
         }
     }
 
@@ -16,21 +22,24 @@ export const Container = styled.div`
         position: absolute;
         z-index: 1;
         right: 1rem;
-
-        background: #EEE;
-
+        background: var(--gray-200);
+        padding: 1rem;
+        
         .favorite {
-
+            
             display: flex;
             align-items: center;
             gap: 1rem;
             
             button {
-                padding: 0.25rem 1rem;
+                color: var(--gray-900);
+                font-size: 1rem;
+                padding: 0.25rem .5rem;
             }
 
             svg {
                 margin: 0 .5rem;
+                color: var(--red-500);
 
                 &:hover{
                     cursor: pointer;
