@@ -24,6 +24,15 @@ export const Container = styled.div`
         right: 1rem;
         background: var(--gray-200);
         padding: 1rem;
+
+        p {
+            span {
+                font-size: .8rem;
+                display: block;
+                text-align: justify;
+                width: 150px;
+            }
+        }
         
         .favorite {
             

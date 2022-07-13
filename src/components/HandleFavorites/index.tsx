@@ -22,18 +22,28 @@ export function HandleFavorites({ setPlace }: HandleFavoritesProps): JSX.Element
                     </div>
                 </Menu.Button>
                 <Menu.Items className='menuItems'>
-                    <Menu.Item>
-                        <div className='favorite'>
-                            <button
-                                onClick={() => setPlace({ label: 'Rio de Janeiro, Rj, Brasil' })}
-                            >
-                                Rio de Janeiro, Rj, Brasil
-                            </button>
-                            <Trash
-                                onClick={() => deleteFavorite('id')}
-                            />
-                        </div>
-                    </Menu.Item>
+                    {favorites.length === 0
+                        ? <p>No Favorites Yet <span>you can save new favorites clicking in the star.</span></p>
+                        : (
+                            favorites.map(favorite => (
+                                <Menu.Item
+                                    key={favorite.id}
+                                >
+                                    <div className='favorite'>
+                                        <button
+                                            onClick={() => setPlace({ label: favorite.label })}
+                                        >
+                                            {favorite.label}
+                                        </button>
+                                        <Trash
+                                            onClick={() => deleteFavorite(favorite.id)}
+                                        />
+                                    </div>
+                                </Menu.Item>
+                            ))
+                        )
+                    }
+
                 </Menu.Items>
             </Menu>
         </Container>

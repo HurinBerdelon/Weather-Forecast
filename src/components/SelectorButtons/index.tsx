@@ -1,3 +1,4 @@
+import { useWeather } from "../../hooks/useWeather";
 import { Container } from "./style";
 
 interface SelectorButtonProps {
@@ -6,6 +7,12 @@ interface SelectorButtonProps {
 }
 
 export function SelectorButtons({ isShowingMoreInformation, setIsShowingMoreInformation }: SelectorButtonProps): JSX.Element {
+
+    const { forecast } = useWeather()
+
+    if (!forecast.current) {
+        return <></>
+    }
 
     return (
         <Container>

@@ -39,7 +39,8 @@ export const Container = styled.div`
 
         &.active {
             border: 2px solid var(--orange-500);
-            color: var(--orange-500);
+            background: var(--orange-500);
+            color: var(--gray-100);
         }
 
         &:hover {

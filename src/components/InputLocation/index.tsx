@@ -14,7 +14,7 @@ export function InputLocation(): JSX.Element {
     // only executes if the place exists, because when the page is mounted, 
     // place is undefined, which means it has no property label
     useEffect(() => {
-        if (place) {
+        if (place.label) {
             geocodeByAddress(place.label)
                 .then(response => getLatLng(response[0])
                     .then(response => setCoordinates(response))

@@ -1,39 +1,28 @@
+import { useWeather } from "../../hooks/useWeather";
 import { Container } from "./style";
 
-interface SidebarProps {
-    alert: {
-        sender: string
-        event: string
-        start: string
-        end: string
-        description: string
-    }[]
-}
-
 export function Sidebar(): JSX.Element {
+
+    const { forecast } = useWeather()
+
+    if (!forecast.alerts) {
+        return <></>
+    }
 
     return (
         <Container>
             <h2>Alerts</h2>
-            <div className="alert">
-                <h3>Sender: <span>Instituto Nacional de Meteorologia</span></h3>
-                <p>Event: <span>Declínio de Temperatura</span></p>
-                <p>Start: <span>12:15 13/07/2022</span></p>
-                <p>End: <span>12:15 13/07/2022</span></p>
-                <p className="description">
-                    INMET publica aviso iniciando em: 12/07/2022 21:00. Leve risco à saúde. Declínio entre 3ºC e 5ºC.
-                </p>
-            </div>
-
-            <div className="alert">
-                <h3>Sender: <span>Instituto Nacional de Meteorologia</span></h3>
-                <p>Event: <span>Declínio de Temperatura</span></p>
-                <p>Start: <span>12:15 13/07/2022</span></p>
-                <p>End: <span>12:15 13/07/2022</span></p>
-                <p className="description">
-                    INMET publica aviso iniciando em: 12/07/2022 21:00. Leve risco à saúde. Declínio entre 3ºC e 5ºC.
-                </p>
-            </div>
+            {forecast.alerts?.map(alert => (
+                <div className="alert">
+                    <h3>Sender: <span>{alert.sender_name}</span></h3>
+                    <p>Event: <span>{alert.event}</span></p>
+                    <p>Start: <span>{alert.end}</span></p>
+                    <p>End: <span>{alert.end}</span></p>
+                    <p className="description">
+                        {alert.description}
+                    </p>
+                </div>
+            ))}
         </Container>
     )
 }

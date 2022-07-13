@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.section`
 
-    max-width: 865px;
+    width: 900px;
     display: flex;
     justify-content: space-evenly;
-    margin-top: 1rem;
+    margin: 1rem 0;
     border: 1px solid var(--gray-400);
     border-radius: 0.25rem;
 
@@ -36,6 +36,13 @@ export const Container = styled.section`
                     font-weight: 600;
                 }
             }
+        }
+    }
+
+    .rightBox {
+        div {
+            min-width: 140px;
+            width: fit-content;
         }
     }
 `

@@ -11,6 +11,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import { useWeather } from "../../hooks/useWeather";
 
 ChartJS.register(
     CategoryScale,
@@ -24,6 +25,12 @@ ChartJS.register(
 )
 
 export function DailyChart(): JSX.Element {
+
+    const { forecast } = useWeather()
+
+    if (!forecast.current) {
+        return <></>
+    }
 
     const options = {
         responsive: true,
@@ -45,7 +52,8 @@ export function DailyChart(): JSX.Element {
             },
             title: {
                 display: true,
-                text: 'Weather forecast',
+                text:
+                    `Temperature and Rain Probability from ${forecast.hourly[0].dt} to ${forecast.hourly[forecast.hourly.length - 1].dt}`,
                 color: '#121619',
                 font: {
                     size: 20,
@@ -55,30 +63,22 @@ export function DailyChart(): JSX.Element {
         }
     }
 
-    const labels = [
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
-    ]
+    const labels = forecast.hourly.map(hour => hour.dt)
 
     const data = {
         labels,
         datasets: [
             {
                 fill: true,
-                label: 'Temperature',
-                data: [17, 18, 21, 22, 14, 15, 20],
+                label: 'Temperature (ºC)',
+                data: forecast.hourly.map(hour => hour.temp),
                 borderColor: '#ff6200',
                 backgroundColor: '#FF620055',
             },
             {
                 fill: true,
-                label: 'Temperature',
-                data: [10, 9, 5, 3, 11, 12, 14],
+                label: 'Rain Probability (%)',
+                data: forecast.hourly.map(hour => hour.pop * 100),
                 borderColor: '#1cd759',
                 backgroundColor: '#1cd75955',
             }
