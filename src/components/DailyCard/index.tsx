@@ -1,26 +1,42 @@
 import { CloudSun } from 'phosphor-react'
+import { useWeather } from '../../hooks/useWeather';
 import { Container } from "./style";
 
 interface DailyCardProps {
     dailyWeather: {
-        weather: string
-        max: string
-        min: string
-        date: string
+        dt: string
+        weekDay: string
+        humidity: number
+        wind_speed: number
+        sunrise: string
+        sunset: string
+        temp: {
+            min: number
+            max: number
+        },
+        pop: number,
+        weather: {
+            main: string
+            icon: string
+        }
     }
-    active?: boolean
 }
 
-export function DailyCard({ dailyWeather, active = false }: DailyCardProps): JSX.Element {
+export function DailyCard({ dailyWeather }: DailyCardProps): JSX.Element {
+
+    const { dayOnScreen, setDayOnScreen } = useWeather()
 
     return (
-        <Container>
-            <div className={active ? 'active' : ''}>
+        <Container
+            onClick={() => setDayOnScreen(dailyWeather)}
+        >
+            <div className={dayOnScreen === dailyWeather ? 'active' : ''}>
                 <CloudSun />
-                <span className='weather'>Rain</span>
-                <p className='temperature'>max: <span>21 ºC </span></p>
-                <p className='temperature'>min: <span>17 ºC </span></p>
-                <p className='date'>Today</p>
+                <span className='weather'>{dailyWeather.weather.main}</span>
+                <p className='temperature'>max: <span>{dailyWeather.temp.max} ºC </span></p>
+                <p className='temperature'>min: <span>{dailyWeather.temp.min} ºC </span></p>
+                <p className='weekday'>{dailyWeather.weekDay}</p>
+                <p className='date'>{dailyWeather.dt}</p>
             </div>
         </Container>
     )

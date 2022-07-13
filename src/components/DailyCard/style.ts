@@ -21,9 +21,13 @@ export const Container = styled.div`
         }
         
         .weather {
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 600;
             letter-spacing: 0.1rem;
+        }
+
+        p {
+            font-size: .85rem;
         }
         
         .temperature {
