@@ -1,26 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-google-places-autocomplete";
 import { useWeather } from "../../hooks/useWeather";
-import { CurrentLocation } from "../CurrentLocation";
+import { SetCurrentLocation } from "../SetCurrentLocation";
 import { FavoriteStar } from "../FavoriteStar";
 import { HandleFavorites } from "../HandleFavorites";
 import { Container } from "./style";
 
-interface PlaceProps {
-    label: string
-}
-
-interface CoordinatesProps {
-    lat: number
-    lng: number
-}
-
 export function InputLocation(): JSX.Element {
 
-    // States to store the place object returned by google-place-autocomplete
-    // and the coordinates of latitude and longitude
-    const [place, setPlace] = useState<PlaceProps>()
-    const { setCoordinates } = useWeather()
+    const { setCoordinates, place, setPlace } = useWeather()
 
     // Everytime the place changes, call the function that returns the coordinates of that place
     // only executes if the place exists, because when the page is mounted, 
@@ -43,9 +31,7 @@ export function InputLocation(): JSX.Element {
                 selectProps={{ place, onChange: setPlace }}
             />
 
-            <CurrentLocation
-                setCoordinates={setCoordinates}
-            />
+            <SetCurrentLocation />
 
             <FavoriteStar label={place?.label} />
             <HandleFavorites setPlace={setPlace} />

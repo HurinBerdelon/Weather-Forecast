@@ -23,23 +23,7 @@ interface ForecastProps {
         temp: number
         pop: number
     }[],
-    daily: {
-        dt: string
-        weekDat: string
-        humidity: number
-        wind_speed: number
-        sunrise: string
-        sunset: string
-        temp: {
-            min: number
-            max: number
-        },
-        pop: number,
-        weather: {
-            main: string
-            icon: string
-        }
-    }[],
+    daily: DayProps[],
     alerts: {
         sender_name: string
         start: string
@@ -49,15 +33,41 @@ interface ForecastProps {
     }[]
 }
 
+interface DayProps {
+    dt: string
+    weekDay: string
+    humidity: number
+    wind_speed: number
+    sunrise: string
+    sunset: string
+    temp: {
+        min: number
+        max: number
+    },
+    pop: number,
+    weather: {
+        main: string
+        icon: string
+    }
+}
+
 interface WeatherContextProps {
     forecast: ForecastProps
     coordinates: CoordinatesProps
+    dayOnScreen: DayProps
+    place: PlaceProps
+    setPlace(place: PlaceProps): void
+    setDayOnScreen(dayOnScreen: DayProps): void
     setCoordinates(coordinates: CoordinatesProps): void
     getForecast(lat: number, lng: number): void
 }
 
 interface WeatherProviderProps {
     children: ReactNode
+}
+
+interface PlaceProps {
+    label: string
 }
 
 // Creates a context to handle the states of weather forecast
@@ -67,9 +77,12 @@ const WeatherContext = createContext<WeatherContextProps>({} as WeatherContextPr
 export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element {
 
     // states to store the forecast object, created based on OpenWeatherAPI response
+    // and state to save the coordinates
+    // and state to save the day that is on the screen
     const [forecast, setForecast] = useState<ForecastProps>({} as ForecastProps)
-    // state to save the coordinates
     const [coordinates, setCoordinates] = useState<CoordinatesProps>({} as CoordinatesProps)
+    const [dayOnScreen, setDayOnScreen] = useState<DayProps>({} as DayProps)
+    const [place, setPlace] = useState<PlaceProps>({} as PlaceProps)
 
     // everytime a user types a new address in the input, the coordinates state will be updated
     // so, the API is called the update the forecast state
@@ -91,20 +104,20 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
         const forecastObject: ForecastProps = {
             alerts: data.alerts,
             lat: data.lat,
-            lng: data.lng,
+            lng: data.lon,
             timezone: data.timezone,
             current: { dt: dayjs.unix(data.current.dt).local().format('HH:mm:ss DD/MM/YYYY') },
             daily: data.daily.map((day: any) => {
                 return {
                     dt: dayjs.unix(day.dt).local().format('DD/MM'),
-                    weekDat: dayjs.unix(day.dt).local().format('dddd'),
+                    weekDay: dayjs.unix(day.dt).local().format('dddd'),
                     humidity: day.humidity,
                     wind_speed: day.wind_speed,
                     sunrise: dayjs.unix(day.sunrise).local().format('HH:mm:ss DD/MM/YYYY'),
                     sunset: dayjs.unix(day.sunset).local().format('HH:mm:ss DD/MM/YYYY'),
                     temp: {
-                        min: day.temp.min,
-                        max: day.temp.max,
+                        min: Math.round(day.temp.min),
+                        max: Math.round(day.temp.max),
                     },
                     pop: day.pop,
                     weather: {
@@ -116,19 +129,29 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
             hourly: data.hourly.map((hour: any) => {
                 return {
                     dt: dayjs.unix(hour.dt).local().format('HH:mm:ss DD/MM/YYYY'),
-                    temp: hour.temp,
+                    temp: Math.round(hour.temp),
                     pop: hour.pop,
                 }
             })
         }
 
-        // after formating the object, it updates the state
+        // after formating the object, it updates the states
         setForecast(forecastObject)
+        setDayOnScreen(forecastObject.daily[0])
     }
 
     return (
         <WeatherContext.Provider
-            value={{ forecast, coordinates, setCoordinates, getForecast }}
+            value={{
+                forecast,
+                coordinates,
+                dayOnScreen,
+                place,
+                setPlace,
+                setDayOnScreen,
+                setCoordinates,
+                getForecast
+            }}
         >
             {children}
         </WeatherContext.Provider>
