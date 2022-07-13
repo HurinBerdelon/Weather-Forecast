@@ -2,14 +2,11 @@ import { useEffect, useState } from "react";
 import GooglePlacesAutocomplete, { geocodeByAddress, getLatLng } from "react-google-places-autocomplete";
 import { CurrentLocation } from "../CurrentLocation";
 import { FavoriteStar } from "../FavoriteStar";
+import { HandleFavorites } from "../HandleFavorites";
 import { Container } from "./style";
 
 interface PlaceProps {
     label: string
-    value: {
-        description: string
-        place_id: string
-    }
 }
 
 interface CoordinatesProps {
@@ -45,11 +42,12 @@ export function InputLocation(): JSX.Element {
                 selectProps={{ place, onChange: setPlace }}
             />
 
-            <FavoriteStar label={place?.label} />
-
             <CurrentLocation
                 setCoordinates={setCoordinates}
             />
+
+            <FavoriteStar label={place?.label} />
+            <HandleFavorites setPlace={setPlace} />
         </Container>
     )
 }
