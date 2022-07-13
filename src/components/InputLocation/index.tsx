@@ -33,8 +33,8 @@ export function InputLocation(): JSX.Element {
 
             <SetCurrentLocation />
 
-            <FavoriteStar label={place?.label} />
-            <HandleFavorites setPlace={setPlace} />
+            <FavoriteStar />
+            <HandleFavorites />
         </Container>
     )
 }

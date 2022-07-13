@@ -6,10 +6,14 @@ export function DailyMoreInformation(): JSX.Element {
 
     const { dayOnScreen, forecast } = useWeather()
 
+    // returns a fragment if forecast state was not set yet, what means there was no searchs yet
     if (!forecast.current) {
         return <></>
     }
 
+    // For the dayOnScreen:
+    // return information about rain probability, max and min temperature, wind speed, humidity and sunrise and sunset times
+    // Its separeted in three columns (leftBox, middleBox and rightBox divs) to better visualization
     return (
         <Container>
             <div className='leftBox'>

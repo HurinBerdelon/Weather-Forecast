@@ -6,11 +6,14 @@ export function WeeklyWeather(): JSX.Element {
 
     const { forecast } = useWeather()
 
+    // render a dailyCard for each element in daily array of forecast
     return (
         <Container>
             {forecast.daily?.map(day => (
                 <DailyCard
-                    dailyWeather={day} />
+                    key={day.dt}
+                    dailyWeather={day}
+                />
 
             ))}
         </Container>

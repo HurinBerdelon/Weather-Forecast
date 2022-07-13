@@ -139,6 +139,7 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
 
         // after formating the object, it updates the states
         setForecast(forecastObject)
+        // set the dayOnScreen to the first element of forecast.daily, which means the current day
         setDayOnScreen(forecastObject.daily[0])
     }
 

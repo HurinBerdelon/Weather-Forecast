@@ -2,22 +2,28 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 
-    div {
+    .container {
         
         display: flex;
         flex-direction: column;
         align-items: center;
         
-        border: 2px solid var(--gray-400);
         border-radius: 0.25rem;
-        
-        color: var(--gray-900);
         
         width: 110px;
         padding: 0.5rem;
         
+        color: var(--gray-900);
+        background: var(--gray-400);
+        
         svg {
             font-size: 3rem;
+        }
+
+        .imageContainer {
+            img {
+                transform: scale(1.25);
+            }
         }
         
         .weather {
@@ -38,8 +44,7 @@ export const Container = styled.div`
         }
 
         &.active {
-            border: 2px solid var(--orange-500);
-            background: var(--orange-500);
+            background: var(--green-500);
             color: var(--gray-100);
         }
 

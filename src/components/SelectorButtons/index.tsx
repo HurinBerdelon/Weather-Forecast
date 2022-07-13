@@ -10,10 +10,12 @@ export function SelectorButtons({ isShowingMoreInformation, setIsShowingMoreInfo
 
     const { forecast } = useWeather()
 
+    // returns a fragment if forecast state was not set yet, what means there was no searchs yet
     if (!forecast.current) {
         return <></>
     }
 
+    // render two buttons, to change between the chart and the more information screen
     return (
         <Container>
             <button

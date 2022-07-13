@@ -17,7 +17,7 @@ export const Container = styled.div`
         color: var(--gray-900);
 
         &.active {
-            background: var(--orange-500);
+            background: var(--green-500);
             opacity: 1;
             color: var(--gray-100);
         }

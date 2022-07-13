@@ -1,18 +1,18 @@
 import { Star } from 'phosphor-react'
 import { v4 as uuidv4 } from 'uuid'
 import { useFavorite } from '../../hooks/useFavorites';
+import { useWeather } from '../../hooks/useWeather';
 import { Container } from "./style";
 
-interface FavoriteStarProps {
-    label?: string
-}
-
-export function FavoriteStar({ label }: FavoriteStarProps): JSX.Element {
+export function FavoriteStar(): JSX.Element {
 
     const { favorites, saveNewFavorite, deleteFavorite } = useFavorite()
+    const { place } = useWeather()
 
-    const favorite = favorites?.find(item => item.label === label)
+    // checks if the current place is in favorite list
+    const favorite = favorites?.find(item => item.label === place.label)
 
+    // if it is a favorite, return a yellow start with feature of removing from favorites
     if (favorite) {
         return (
             <Container>
@@ -25,13 +25,14 @@ export function FavoriteStar({ label }: FavoriteStarProps): JSX.Element {
         )
     }
 
+    // if it is not a favorite, return a black start with the feature of adding to favorite
     return (
         <Container>
             <Star
                 className='notFavorite'
                 onClick={() => saveNewFavorite({
                     id: uuidv4(),
-                    label: label as string
+                    label: place.label as string
                 })}
             />
         </Container>

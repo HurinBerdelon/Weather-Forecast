@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CurrentLocation } from "./components/CurrentLocation";
 import { DailyChart } from "./components/DailyChart";
 import { DailyMoreInformation } from "./components/DailyMoreInformation";
+import { Header } from "./components/Header";
 import { InputLocation } from "./components/InputLocation";
 import { SelectorButtons } from "./components/SelectorButtons";
 import { Sidebar } from "./components/Sidebar";
@@ -20,6 +21,7 @@ function App() {
 			<GlobalStyle />
 			<WeatherProvider>
 				<FavoritesProvider>
+					<Header />
 					<InputLocation />
 					<CurrentLocation />
 					<MainContainer>

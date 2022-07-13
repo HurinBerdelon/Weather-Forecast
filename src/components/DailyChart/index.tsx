@@ -13,6 +13,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import { useWeather } from "../../hooks/useWeather";
 
+// Register elements of ChartJS to be used
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -28,12 +29,16 @@ export function DailyChart(): JSX.Element {
 
     const { forecast } = useWeather()
 
+    // returns a fragment if forecast state was not set yet, what means there was no searchs yet
     if (!forecast.current) {
         return <></>
     }
 
+    // define the options of the plot object
+    // can be found in https://www.chartjs.org/docs/latest/general/options.html
     const options = {
         responsive: true,
+        // set a color to the ticks of the chart
         scales: {
             y: {
                 ticks: {
@@ -46,6 +51,7 @@ export function DailyChart(): JSX.Element {
                 }
             }
         },
+        // Add legend and title plugins
         plugins: {
             legend: {
                 position: 'top' as const,
@@ -63,8 +69,10 @@ export function DailyChart(): JSX.Element {
         }
     }
 
+    // Define the labels, it means the X axis, with the dates of hourly forecast
     const labels = forecast.hourly.map(hour => hour.dt)
 
+    // Define two datasets, the temperature and the probability of rain
     const data = {
         labels,
         datasets: [
