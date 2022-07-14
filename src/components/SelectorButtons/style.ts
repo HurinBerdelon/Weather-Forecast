@@ -7,9 +7,9 @@ export const Container = styled.div`
     justify-content: center;
     gap: 1rem;
 
-    /* don't show the buttons if the screen's width is less then 480px */
+    /* don't show the buttons if the screen's width is less then 620px */
     /* charts are not shown in this screens */
-    @media (max-width: 480px) {
+    @media (max-width: 620px) {
         display: none;
     }
 

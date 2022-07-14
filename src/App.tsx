@@ -21,7 +21,7 @@ function App() {
 	// checks if the screen is of a mobile device and show the more info section
 	// charts are not displayed in mobile devices
 	useEffect(() => {
-		if (screen.width < 480) {
+		if (screen.width < 620) {
 			setIsShowingMoreInformation(true)
 		}
 	}, [screen])

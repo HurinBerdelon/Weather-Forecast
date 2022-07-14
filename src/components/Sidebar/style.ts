@@ -52,8 +52,10 @@ export const Container = styled.aside`
         }
     }
 
-    /* removes the internal overflow when on mobile devices and adjust the padding and margin */
-    @media (max-width: 480px) {
+    /* removes the internal overflow and adjust the padding and margin */
+    @media (max-width: 1280px) {
+        align-self: center;
+        max-width: 800px;
         margin: .5rem;
         padding: 0.5rem;
         overflow: none;
