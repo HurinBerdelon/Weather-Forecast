@@ -19,7 +19,7 @@ export function DailyMoreInformation(): JSX.Element {
             <div className='leftBox'>
                 <div>
                     <Sun />
-                    <p>Rain prob: <span>{dayOnScreen.pop * 100} %</span></p>
+                    <p>Rain prob: <span>{Math.round(dayOnScreen.pop * 100)} %</span></p>
                 </div>
                 <div>
                     <ArrowFatUp />

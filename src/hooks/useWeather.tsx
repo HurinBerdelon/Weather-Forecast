@@ -104,7 +104,13 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
 
         // Format the object
         const forecastObject: ForecastProps = {
-            alerts: data.alerts,
+            alerts: data.alerts?.map((alert: any) => ({
+                sender_name: alert.sender_name,
+                start: dayjs.unix(alert.start).local().format('HH:mm:ss DD/MM/YYYY'),
+                end: dayjs.unix(alert.end).local().format('HH:mm:ss DD/MM/YYYY'),
+                event: alert.event,
+                description: alert.description,
+            })),
             lat: data.lat,
             lng: data.lon,
             timezone: data.timezone,
