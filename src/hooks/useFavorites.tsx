@@ -33,10 +33,12 @@ export function FavoritesProvider({ children }: FavoriteProviderProps): JSX.Elem
 
     // Save the favorites in the localStorage everytime it changes
     useEffect(() => {
-        localStorage.setItem(
-            favoriteKey,
-            JSON.stringify(favorites)
-        )
+        if (favorites.length > 0) {
+            localStorage.setItem(
+                favoriteKey,
+                JSON.stringify(favorites)
+            )
+        }
     }, [favorites])
 
     // Save new favorite function updates the state with the old favorites and the new one and save in the localstorage
