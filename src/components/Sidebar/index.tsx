@@ -1,4 +1,5 @@
 import { useWeather } from "../../hooks/useWeather";
+import { InfoAboutAlerts } from "./InfoAboutAlerts";
 import { Container } from "./style";
 
 export function Sidebar(): JSX.Element {
@@ -13,7 +14,10 @@ export function Sidebar(): JSX.Element {
     // if there is some alerts, map into its array, returning information about who send the alert, its event, start and end date
     return (
         <Container>
-            <h2>Alerts</h2>
+            <h2>
+                Alerts
+                <InfoAboutAlerts />
+            </h2>
             {forecast.alerts?.map((alert, index) => (
                 <div key={index} className="alert">
                     <h3>Sender: <span>{alert.sender_name}</span></h3>

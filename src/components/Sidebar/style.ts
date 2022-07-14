@@ -9,9 +9,22 @@ export const Container = styled.aside`
     margin-bottom: 1rem;
     overflow-Y: auto;
 
+    
     h2 {
-        text-align: center;
+        /* To allow the popover panel be absolute position reference this h2 */
+        position: relative;
+
         color: var(--gray-900);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        svg {
+            height: 100%;
+            color: var(--gray-900);
+            font-size: 1.5rem;
+        }
     }
 
     .alert {
