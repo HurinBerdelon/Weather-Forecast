@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
         --yellow-500: #e9bb28;
         --green-500: #1cd759;
         
-        --gray-100: #F9FFF9;
+        --gray-100: #EEF5EE;
         --gray-200: #E2E4E2;
         --gray-400: #A4A7A4;
         --gray-900: #121619;
@@ -24,9 +24,14 @@ export const GlobalStyle = createGlobalStyle`
     body {
         width: 100vw;
         max-width: 1280px;
-        min-height: 100%;
         margin: 0 auto;
-        background: var(--gray-100);
+
+        #root {
+            display: flex;
+            flex-direction: column;
+            background: var(--gray-100);
+            min-height: 100vh;
+        }
     }
 
     body, input, button {

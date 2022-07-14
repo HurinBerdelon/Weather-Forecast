@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify'
 import { CurrentLocation } from "./components/CurrentLocation";
 import { DailyChart } from "./components/DailyChart";
 import { DailyMoreInformation } from "./components/DailyMoreInformation";
+import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { InputLocation } from "./components/InputLocation";
 import { SelectorButtons } from "./components/SelectorButtons";
@@ -48,6 +49,7 @@ function App() {
 						</main>
 						<Sidebar />
 					</MainContainer>
+					<Footer />
 				</FavoritesProvider>
 			</WeatherProvider>
 		</>

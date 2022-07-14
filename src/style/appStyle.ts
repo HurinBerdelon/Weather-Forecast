@@ -4,13 +4,13 @@ export const MainContainer = styled.div`
 
     display: flex;
     justify-content: center;
-    
+    flex: 1;
+
     main {
         width: 75%;
         display: flex;
         flex-direction: column;
         align-items: center;
-        
     }
 
     /* on mobile devices give the mainContainer a flex-direction column and main tag full width */
