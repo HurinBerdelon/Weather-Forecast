@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 
+    position: relative;
+
     .favoritesButton {
         display: flex;
         align-items: center;
@@ -21,7 +23,7 @@ export const Container = styled.div`
     .menuItems {
         position: absolute;
         z-index: 1;
-        right: 1rem;
+        right: 0rem;
         background: var(--gray-200);
         padding: 1rem;
 
@@ -39,7 +41,8 @@ export const Container = styled.div`
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
+            min-width: 300px;
             
             button {
                 color: var(--gray-900);
@@ -51,7 +54,7 @@ export const Container = styled.div`
             }
 
             svg {
-                margin: 0 .5rem;
+                margin: 0 .25rem;
                 color: var(--red-500);
 
                 &:hover{

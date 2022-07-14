@@ -41,7 +41,6 @@ export function FavoritesProvider({ children }: FavoriteProviderProps): JSX.Elem
 
     // Save new favorite function updates the state with the old favorites and the new one and save in the localstorage
     function saveNewFavorite(favorite: FavoriteProps) {
-        console.log('save')
         setFavorites(prevFavorites => [...prevFavorites, favorite])
     }
 

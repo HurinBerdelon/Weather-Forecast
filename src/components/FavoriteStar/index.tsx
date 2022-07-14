@@ -12,6 +12,17 @@ export function FavoriteStar(): JSX.Element {
     // checks if the current place is in favorite list
     const favorite = favorites?.find(item => item.label === place.label)
 
+    // Save favorite if place.label is not undefined
+    function handleSaveFavorite() {
+
+        if (place.label) {
+            saveNewFavorite({
+                id: uuidv4(),
+                label: place.label as string
+            })
+        }
+    }
+
     // if it is a favorite, return a yellow start with feature of removing from favorites
     if (favorite) {
         return (
@@ -32,10 +43,7 @@ export function FavoriteStar(): JSX.Element {
     return (
         <Container>
             <button
-                onClick={() => saveNewFavorite({
-                    id: uuidv4(),
-                    label: place.label as string
-                })}
+                onClick={handleSaveFavorite}
             >
                 <Star
                     className='notFavorite'
