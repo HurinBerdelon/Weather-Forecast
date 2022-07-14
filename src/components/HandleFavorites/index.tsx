@@ -16,7 +16,7 @@ export function HandleFavorites(): JSX.Element {
                 {/* the button is just a icon with a text */}
                 <Menu.Button>
                     <div className="favoritesButton">
-                        Favorites
+                        <span className='label'> Favorites</span>
                         <CaretDown />
                     </div>
                 </Menu.Button>

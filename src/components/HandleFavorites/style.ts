@@ -18,6 +18,13 @@ export const Container = styled.div`
         &:hover {
             filter: brightness(1.2);
         }
+
+        /* On screens with less then 720px, remove the label of the button, showing just the icon  */
+        @media (max-width: 720px) {
+            .label {
+                display: none;
+            }
+        }
     }
 
     .menuItems {

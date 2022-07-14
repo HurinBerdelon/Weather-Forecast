@@ -11,7 +11,6 @@ export const Container = styled.section`
     border-radius: 0.25rem;
 
     background: #FFFFFF;
-
     
     div:first-of-type {
 

@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        width: 100%;
+        width: 100vw;
         max-width: 1280px;
         min-height: 100%;
         margin: 0 auto;

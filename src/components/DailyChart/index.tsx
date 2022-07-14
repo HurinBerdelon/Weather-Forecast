@@ -47,7 +47,8 @@ export function DailyChart(): JSX.Element {
             },
             x: {
                 ticks: {
-                    color: '#121619'
+                    color: '#121619',
+                    maxTicksLimit: 10
                 }
             }
         },

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer } from 'react-toastify'
 import { CurrentLocation } from "./components/CurrentLocation";
 import { DailyChart } from "./components/DailyChart";
@@ -16,6 +16,14 @@ import { GlobalStyle } from "./style/global";
 function App() {
 
 	const [isShowingMoreInformation, setIsShowingMoreInformation] = useState(false)
+
+	// checks if the screen is of a mobile device and show the more info section
+	// charts are not displayed in mobile devices
+	useEffect(() => {
+		if (screen.width < 480) {
+			setIsShowingMoreInformation(true)
+		}
+	}, [screen])
 
 	return (
 		<>

@@ -45,4 +45,24 @@ export const Container = styled.section`
             width: fit-content;
         }
     }
+
+    /* On mobile devices, invert the orientation of the flex boxes and add border to each card, to better fit the visualization*/
+    @media (max-width: 480px) {
+        width: 100%;
+        border: none;
+        flex-direction: column;
+        gap: 1rem;
+
+        .leftBox, .rightBox, .middleBox {
+            flex-direction: row;
+            justify-content: center;
+            gap: 0.5rem;
+
+            div {
+                border: 1px solid var(--gray-400);
+                border-radius: 0.25rem;
+            }
+
+        }
+    }
 `
