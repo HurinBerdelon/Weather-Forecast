@@ -18,7 +18,10 @@ export function DailyMoreInformation(): JSX.Element {
         <Container>
             <div className='leftBox'>
                 <div>
-                    <Sun />
+                    <img
+                        src={`${import.meta.env.VITE_OPEN_WEATHER_ICON}/${dayOnScreen.weather.icon}.png`}
+                        alt={dayOnScreen.weather.main}
+                    />
                     <p>Rain prob: <span>{Math.round(dayOnScreen.pop * 100)} %</span></p>
                 </div>
                 <div>

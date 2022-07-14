@@ -8,6 +8,7 @@ export const Container = styled.section`
     margin: 1rem 0;
     border: 1px solid var(--gray-400);
     border-radius: 0.25rem;
+    background: var(--gray-400);
 
     .leftBox, .rightBox, .middleBox {
         display: flex;
@@ -22,6 +23,10 @@ export const Container = styled.section`
             width: 120px;
             padding: .5rem 0;
             gap: 1rem;
+
+            img {
+                transform: scale(1.25);
+            }
 
             svg {
                 font-size: 3rem;

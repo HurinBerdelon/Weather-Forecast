@@ -2,8 +2,11 @@ import { createContext, ReactNode, useContext, useEffect, useState } from "react
 import { weather_api } from "../services/weather_api";
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+
 
 dayjs.extend(utc)
+dayjs.extend(timezone)
 
 interface CoordinatesProps {
     lat: number
@@ -106,23 +109,23 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
         const forecastObject: ForecastProps = {
             alerts: data.alerts?.map((alert: any) => ({
                 sender_name: alert.sender_name,
-                start: dayjs.unix(alert.start).local().format('HH:mm:ss DD/MM/YYYY'),
-                end: dayjs.unix(alert.end).local().format('HH:mm:ss DD/MM/YYYY'),
+                start: dayjs.unix(alert.start).tz(data.timezone).format('HH:mm:ss DD/MM/YYYY'),
+                end: dayjs.unix(alert.end).tz(data.timezone).format('HH:mm:ss DD/MM/YYYY'),
                 event: alert.event,
                 description: alert.description,
             })),
             lat: data.lat,
             lng: data.lon,
             timezone: data.timezone,
-            current: { dt: dayjs.unix(data.current.dt).local().format('HH:mm:ss DD/MM/YYYY') },
+            current: { dt: dayjs.unix(data.current.dt).tz(data.timezone).format('HH:mm:ss DD/MM/YYYY') },
             daily: data.daily.map((day: any) => {
                 return {
-                    dt: dayjs.unix(day.dt).local().format('DD/MM'),
-                    weekDay: dayjs.unix(day.dt).local().format('dddd'),
+                    dt: dayjs.unix(day.dt).tz(data.timezone).format('DD/MM'),
+                    weekDay: dayjs.unix(day.dt).tz(data.timezone).format('dddd'),
                     humidity: day.humidity,
                     wind_speed: day.wind_speed,
-                    sunrise: dayjs.unix(day.sunrise).local().format('HH:mm:ss'),
-                    sunset: dayjs.unix(day.sunset).local().format('HH:mm:ss'),
+                    sunrise: dayjs.unix(day.sunrise).tz(data.timezone).format('HH:mm:ss'),
+                    sunset: dayjs.unix(day.sunset).tz(data.timezone).format('HH:mm:ss'),
                     temp: {
                         min: Math.round(day.temp.min),
                         max: Math.round(day.temp.max),
@@ -136,7 +139,7 @@ export function WeatherProvider({ children }: WeatherProviderProps): JSX.Element
             }),
             hourly: data.hourly.map((hour: any) => {
                 return {
-                    dt: dayjs.unix(hour.dt).local().format('HH:mm:ss DD/MM/YYYY'),
+                    dt: dayjs.unix(hour.dt).tz(data.timezone).format('HH:mm:ss DD/MM/YYYY'),
                     temp: Math.round(hour.temp),
                     pop: hour.pop,
                 }
