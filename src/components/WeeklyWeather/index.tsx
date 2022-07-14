@@ -4,7 +4,11 @@ import { Container } from "./style";
 
 export function WeeklyWeather(): JSX.Element {
 
-    const { forecast } = useWeather()
+    const { forecast, place } = useWeather()
+
+    if (!forecast.current && place.label) {
+        return <p>loading...</p>
+    }
 
     // render a dailyCard for each element in daily array of forecast
     return (
