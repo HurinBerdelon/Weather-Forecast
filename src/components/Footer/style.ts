@@ -17,4 +17,10 @@ export const Container = styled.footer`
     svg {
         font-size: 1.25rem;
     }
+
+    
+    @media (max-width: 1280px) {
+        width: 95%;
+        align-self: center;
+    }
 `
