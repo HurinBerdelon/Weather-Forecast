@@ -2,5 +2,5 @@ import axios from "axios";
 
 // Creates axios instance to access OpenWeatherAPI
 export const weather_api = axios.create({
-    baseURL: 'https://api.openweathermap.org/data/2.5'
+    baseURL: import.meta.env.VITE_OPEN_WEATHER_ENDPOINT
 })
