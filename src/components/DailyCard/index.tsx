@@ -33,6 +33,8 @@ export function DailyCard({ dailyWeather }: DailyCardProps): JSX.Element {
             onClick={() => setDayOnScreen(dailyWeather)}
         >
             <div className={dayOnScreen === dailyWeather ? 'active container' : 'container'}>
+                <p className='weekday'>{dailyWeather.weekDay}</p>
+                <p className='date'>{dailyWeather.dt}</p>
                 <div className='imageContainer'>
                     <img
                         src={`${import.meta.env.VITE_OPEN_WEATHER_ICON}/${dailyWeather.weather.icon}.png`}
@@ -42,8 +44,6 @@ export function DailyCard({ dailyWeather }: DailyCardProps): JSX.Element {
                 <span className='weather'>{dailyWeather.weather.main}</span>
                 <p className='temperature'>max: <span>{dailyWeather.temp.max} ºC </span></p>
                 <p className='temperature'>min: <span>{dailyWeather.temp.min} ºC </span></p>
-                <p className='weekday'>{dailyWeather.weekDay}</p>
-                <p className='date'>{dailyWeather.dt}</p>
             </div>
         </Container>
     )

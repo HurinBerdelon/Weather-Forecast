@@ -25,6 +25,10 @@ export const Container = styled.button`
                 transform: scale(1.25);
             }
         }
+
+        .weekday {
+            font-weight: 600;
+        }
         
         .weather {
             font-size: 1.125rem;
