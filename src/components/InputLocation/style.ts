@@ -27,4 +27,9 @@ export const Container = styled.section`
             }
         }
     }
+
+    @media (max-width: 1280px) {
+        width: 95%;
+        margin: 0 auto;
+    }
 `

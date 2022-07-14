@@ -51,6 +51,11 @@ export const Container = styled.section`
         }
     }
 
+     /* on Devices less then 920px set the width to percentage */
+    @media (max-width: 920px) {
+        width: 95%;
+    }
+
     /* On mobile devices, invert the orientation of the flex boxes and add border to each card, to better fit the visualization*/
     @media (max-width: 480px) {
         width: 100%;

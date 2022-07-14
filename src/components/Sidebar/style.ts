@@ -55,6 +55,7 @@ export const Container = styled.aside`
     /* removes the internal overflow and adjust the padding and margin */
     @media (max-width: 1280px) {
         align-self: center;
+        width: 95%;
         max-width: 800px;
         margin: .5rem;
         padding: 0.5rem;
